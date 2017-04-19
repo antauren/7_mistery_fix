@@ -16,6 +16,13 @@ def get_coefficients(string):
         return get_coefficients(input())
 
 
+def get_coefficients_from_argv(argv_list):
+	try:
+		return str(argv_list[1]) +   ' ' +str(argv_list[2]) + ' ' + str(argv_list[3])
+	except IndexError:
+		return None
+
+
 def get_roots(a, b, c):
     discriminant = (b ** 2) - (4 * a * c)
 
@@ -30,6 +37,7 @@ def get_roots(a, b, c):
     else:
         return root1, root2
 
+
 def start_script(argv_list):
     if len(argv_list) < 2:
         print('\nВас привествует программа вычисления корней квадратичного уравнения\n'
@@ -41,16 +49,11 @@ def start_script(argv_list):
               'Наример: python3 quadratic_equation.py 1 2 -3\n')
         return None
 
-    try:
-    	string_coefficients = str(argv_list[1]) +   ' ' +str(argv_list[2]) + ' ' + str(argv_list[3])
-    except IndexError:
-    	string_coefficients = ''
-
-    coefficients = get_coefficients(string_coefficients)
+    coefficients = get_coefficients( get_coefficients_from_argv(argv_list) )
     a, b, c = coefficients[0], coefficients[1], coefficients[2]
     solution = get_roots(a, b, c)
 
-    if solution.count(None) ==2:
+    if solution.count(None) == 2:
     	print('Уравнение не имеет решений на множестве действительных чисел')
     elif solution.count(None) ==1:
     	print('Квадратное уравнение имеет один действительный корень: ', solution[0])
