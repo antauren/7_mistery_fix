@@ -1,10 +1,18 @@
 # Quadratic Equations Solver
 
-[TODO. There will be project description]
+Программа решения квадратных уравнений.
 
 # How to Use
 
-[TODO]
+```bash
+python quadratic_equation.py 1 2 -3
+Уравнение имеет два решения:  -3.0 1.0
+```
+# How to Help
+
+```bash
+python quadratic_equation.py --help
+```
 
 # How to Launch Tests
 
